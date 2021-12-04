@@ -85,19 +85,10 @@ nav {
 
 .login__details {
   display: flex;
-  flex-direction: row;
   justify-content: flex-end;
-  align-items: flex-end;
   /* align-items: flex-end; */
   font-size: 15px;
-  margin-right: 40px;
-  color: gray;
-}
-.login__details-user {
-  margin-right: 65px;
-}
-.login__details-pin {
-  margin-right: 50px;
+  margin-left: 20px;
 }
 /* MAIN */
 .app {

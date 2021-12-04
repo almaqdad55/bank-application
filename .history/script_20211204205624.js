@@ -144,19 +144,19 @@ const calcDisplayBalance = function (acc) {
 
 const calcDisplaySummary = function (acc) {
   const incomes = acc.movements
-    .filter((mov) => mov > 0)
+    .filter(mov => mov > 0)
     .reduce((acc, mov) => acc + mov, 0);
 
   labelSumIn.textContent = formatCur(incomes, acc.locale, acc.currency);
 
   const out = acc.movements
-    .filter((mov) => mov < 0)
+    .filter(mov => mov < 0)
     .reduce((acc, mov) => acc + mov, 0);
   labelSumOut.textContent = formatCur(out, acc.locale, acc.currency);
 
   const interest = acc.movements
-    .filter((mov) => mov > 0)
-    .map((deposit) => (deposit * acc.interestRate) / 100)
+    .filter(mov => mov > 0)
+    .map(deposit => (deposit * acc.interestRate) / 100)
     .filter((int, i, arr) => {
       // console.log(arr);
       return int >= 1;
@@ -170,7 +170,7 @@ const createUsernames = function (accs) {
     acc.username = acc.owner
       .toLowerCase()
       .split(' ')
-      .map((name) => name[0])
+      .map(name => name[0])
       .join('');
   });
 };
@@ -228,7 +228,7 @@ btnLogin.addEventListener('click', function (e) {
   e.preventDefault();
 
   currentAccount = accounts.find(
-    (acc) => acc.username === inputLoginUsername.value
+    acc => acc.username === inputLoginUsername.value
   );
   console.log(currentAccount);
 
@@ -278,7 +278,7 @@ btnTransfer.addEventListener('click', function (e) {
   e.preventDefault();
   const amount = +inputTransferAmount.value;
   const receiverAcc = accounts.find(
-    (acc) => acc.username === inputTransferTo.value
+    acc => acc.username === inputTransferTo.value
   );
   inputTransferAmount.value = inputTransferTo.value = '';
 
@@ -311,10 +311,7 @@ btnLoan.addEventListener('click', function (e) {
 
   const amount = Math.floor(inputLoanAmount.value);
 
-  if (
-    amount > 0 &&
-    currentAccount.movements.some((mov) => mov >= amount * 0.1)
-  ) {
+  if (amount > 0 && currentAccount.movements.some(mov => mov >= amount * 0.1)) {
     //Loan Approval
     setTimeout(function () {
       console.log('Loan Approved');
@@ -351,7 +348,7 @@ btnClose.addEventListener('click', function (e) {
     +inputClosePin.value === currentAccount.pin
   ) {
     const index = accounts.findIndex(
-      (acc) => acc.username === currentAccount.username
+      acc => acc.username === currentAccount.username
     );
     console.log(index);
     // .indexOf(23)
@@ -437,5 +434,5 @@ setInterval(() => {
   };
 
   const time = new Intl.DateTimeFormat('en-US', options).format(now);
-  // console.log(time);
+  console.log(time);
 }, 1000);

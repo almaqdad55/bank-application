@@ -90,14 +90,8 @@ nav {
   align-items: flex-end;
   /* align-items: flex-end; */
   font-size: 15px;
-  margin-right: 40px;
-  color: gray;
-}
-.login__details-user {
-  margin-right: 65px;
-}
-.login__details-pin {
-  margin-right: 50px;
+  margin-right: 70px;
+  color: red;
 }
 /* MAIN */
 .app {
